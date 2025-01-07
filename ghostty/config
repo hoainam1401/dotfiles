@@ -10,6 +10,7 @@ window-colorspace = display-p3
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
 
+fullscreen = true
 window-padding-balance = true
 window-save-state = always
 macos-titlebar-style = transparent
@@ -22,8 +23,8 @@ keybind = ctrl+a=select_all
 
 keybind = ctrl+n=new_window
 keybind = ctrl+t=new_tab
-keybind = ctrl+l=next_tab
-keybind = ctrl+h=previous_tab
+keybind = ctrl+1=next_tab
+keybind = ctrl+2=previous_tab
 keybind = ctrl+comma=move_tab:-1
 keybind = ctrl+period=move_tab:1
 
@@ -46,10 +47,10 @@ keybind = ctrl+down=resize_split:down,5
 keybind = ctrl+e=equalize_splits
 
 # quick pane switch
-keybind = ctrl+1=goto_split:right
-keybind = ctrl+2=goto_split:left
-keybind = ctrl+3=goto_split:down
-keybind = ctrl+4=goto_split:up
+keybind = ctrl+shift+l=goto_split:right
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+j=goto_split:down
+keybind = ctrl+shift+k=goto_split:up
 
 #Icon
 macos-icon = custom-style
