@@ -14,43 +14,6 @@ window-padding-balance = true
 window-save-state = always
 macos-titlebar-style = transparent
 
-# keybindings
-keybind = ctrl+c=copy_to_clipboard
-keybind = ctrl+v=paste_from_clipboard
-keybind = ctrl+shift+v=paste_from_selection
-keybind = ctrl+a=select_all
-
-keybind = ctrl+n=new_window
-keybind = ctrl+t=new_tab
-keybind = ctrl+1=next_tab
-keybind = ctrl+2=previous_tab
-keybind = ctrl+comma=move_tab:-1
-keybind = ctrl+period=move_tab:1
-
-keybind = ctrl+q=close_surface
-
-# quick tab switch
-keybind = f1=goto_tab:1
-keybind = f2=goto_tab:2
-keybind = f3=goto_tab:3
-keybind = f4=goto_tab:4
-keybind = f5=goto_tab:5
-
-# slplit pane
-keybind = ctrl+r=new_split:right
-keybind = ctrl+d=new_split:down
-keybind = ctrl+left=resize_split:left,5
-keybind = ctrl+right=resize_split:right,5
-keybind = ctrl+up=resize_split:up,5
-keybind = ctrl+down=resize_split:down,5
-keybind = ctrl+e=equalize_splits
-
-# quick pane switch
-keybind = ctrl+]=goto_split:right
-keybind = ctrl+[=goto_split:left
-keybind = ctrl+'=goto_split:down
-keybind = ctrl+;=goto_split:up
-
 #Icon
 macos-icon = custom-style
 macos-icon-frame = plastic
