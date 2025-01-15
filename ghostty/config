@@ -2,24 +2,35 @@ font-family = Fira Code Medium
 font-size = 14
 shell-integration-features = no-cursor, no-title, sudo
 cursor-style = block
+cursor-color = #c48270
+cursor-opacity = 0.65 
 adjust-cell-height = 10%
-background-opacity = 0.75
 config-file = ghostty-theme
-window-colorspace = display-p3
-
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
+macos-non-native-fullscreen = true
+macos-titlebar-proxy-icon = hidden
+macos-window-shadow = false
+macos-titlebar-style = hidden
 
+background-opacity = 0.80
+background-blur-radius = 70
+title = ""
+adjust-cursor-thickness = 5
+
+# window-decoration = false
+window-colorspace = display-p3
 window-padding-balance = true
 window-save-state = always
-macos-titlebar-style = transparent
+window-padding-y = 0
+window-padding-x = 0
 
-#Icon
-macos-icon = custom-style
-macos-icon-frame = plastic
-# macos-icon-ghost-color = #ff9580
-macos-icon-ghost-color = #6272a4
-macos-icon-screen-color = #bd93f9
+macos-titlebar-style = transparent
+gtk-adwaita = false
+
+
+# Keybindings
+keybind = f11=toggle_fullscreen
 
 # Some shaders can be found in this repo, they're usually uploaded to discord
 # https://github.com/hackrmomo/ghostty-shaders
