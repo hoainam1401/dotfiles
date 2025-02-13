@@ -4,13 +4,13 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		main = "ibl",
 		opts = {
-			indent = { char = "┊" },
+			indent = { char = "│" },
 		},
 	},
 	{
 		"lukas-reineke/virt-column.nvim",
 		opts = {
-			char = "│",
+			char = "┊",
 			virtcolumn = "94",
 			hihlight = "WarningMsg",
 		},
