@@ -1,17 +1,17 @@
 font-family = MonoLisaPlus Medium
-font-family-bold = MonoLisaPlus Bold
-font-family-italic = MonoLisaPlus Italic
-font-family-bold-italic = MonoLisaPlus Bold Italic
 font-size = 14
+font-thicken = true
 shell-integration-features = no-cursor, no-title, sudo
+window-title-font-family = "MonoLisaPlus Variable"
 
 cursor-style = block
 cursor-opacity = 0.65
 
-adjust-cell-height = 10%
+adjust-cell-height = 15%
 config-file = ghostty-theme
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
+
 macos-non-native-fullscreen = true
 macos-titlebar-proxy-icon = hidden
 macos-window-shadow = false
@@ -34,9 +34,6 @@ window-height = 33
 macos-titlebar-style = transparent
 gtk-adwaita = false
 
-
-# Keybindings
-keybind = f11=toggle_fullscreen
 
 # Updates
 auto-update = download
