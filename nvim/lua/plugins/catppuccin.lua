@@ -6,6 +6,23 @@ return {
 	config = function()
 		require("catppuccin").setup({
 			transparent_background = true,
+			native_lsp = {
+				enabled = true,
+				virtual_text = {
+					errors = "italic",
+					hints = "italic",
+					warnings = "italic",
+					information = "italic",
+					ok = "italic",
+				},
+				underlines = {
+					errors = "underline",
+					hints = "underline",
+					warnings = "underline",
+					information = "underline",
+					ok = "underline",
+				},
+			},
 		})
 		vim.cmd.colorscheme("catppuccin-mocha")
 	end,
