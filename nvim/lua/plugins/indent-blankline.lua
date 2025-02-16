@@ -4,7 +4,18 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		main = "ibl",
 		opts = {
-			indent = { char = "│" },
+			indent = {
+				char = "│",
+				highlight = {
+					"RainbowRed",
+					"RainbowYellow",
+					"RainbowBlue",
+					"RainbowOrange",
+					"RainbowGreen",
+					"RainbowViolet",
+					"RainbowCyan",
+				},
+			},
 		},
 	},
 	{
