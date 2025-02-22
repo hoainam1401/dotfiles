@@ -32,7 +32,7 @@ return {
 				black = "#F5F5F5",
 			},
 			transparent_bg = false,
-      italic_coment = true,
+			italic_coment = true,
 		})
 		vim.cmd.colorscheme("dracula-soft")
 	end,
