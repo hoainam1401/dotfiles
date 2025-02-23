@@ -31,7 +31,7 @@ return {
 				vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#CBA6F7" })
 				vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#89DCEB" })
 			end)
-
+			vim.g.rainbow_delimiters = { highlight = highlight }
 			require("ibl").setup({
 				scope = {
 					highlight = highlight,
