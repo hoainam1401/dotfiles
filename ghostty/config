@@ -1,11 +1,15 @@
-font-family = MonoLisaPlus Medium
+font-family = MonoLisaPlus 
+font-style = Medium
+font-style-italic = Regular Italic
+font-style-bold = Bold
+font-style-bold-italic = Bold Italic
 font-size = 14
 font-thicken = true
-shell-integration-features = no-cursor, no-title, sudo
 window-title-font-family = "MonoLisaPlus Variable"
 
 cursor-style = block
 cursor-opacity = 0.65
+adjust-cursor-thickness = 5
 
 adjust-cell-height = 15%
 config-file = Dracula-pro
@@ -19,16 +23,16 @@ macos-titlebar-style = hidden
 
 background-opacity = 0.80
 title = ""
-adjust-cursor-thickness = 5
 
 window-decoration = false
 window-colorspace = display-p3
 window-padding-balance = true
+window-padding-color = background
 window-save-state = always
 window-padding-y = 0
 window-padding-x = 0
-window-width = 196
-window-height = 180
+window-width = 192
+window-height = 108
 
 macos-titlebar-style = transparent
 gtk-adwaita = false
@@ -38,4 +42,6 @@ gtk-adwaita = false
 auto-update = download
 auto-update-channel = stable
 
-
+# Shell integrations
+shell-integration = zsh
+shell-integration-features = no-cursor, no-title, sudo
