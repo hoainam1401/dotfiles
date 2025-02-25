@@ -8,7 +8,7 @@ cursor-style = block
 cursor-opacity = 0.65
 
 adjust-cell-height = 15%
-config-file = ghostty-theme
+config-file = Dracula-pro
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
 
@@ -18,7 +18,6 @@ macos-window-shadow = false
 macos-titlebar-style = hidden
 
 background-opacity = 0.80
-# background-blur-radius = 70
 title = ""
 adjust-cursor-thickness = 5
 
@@ -28,8 +27,8 @@ window-padding-balance = true
 window-save-state = always
 window-padding-y = 0
 window-padding-x = 0
-window-width = 160
-window-height = 33
+window-width = 196
+window-height = 180
 
 macos-titlebar-style = transparent
 gtk-adwaita = false
