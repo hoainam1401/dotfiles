@@ -12,8 +12,8 @@ return {
 		config = function()
 			local indent_blankline = vim.api.nvim_create_augroup("inndent_blankline_augroup", { clear = true })
 			local highlight = {
-        "RainbowGreen",
-        "RainbowViolet",
+				"RainbowGreen",
+				"RainbowViolet",
 				"RainbowRed",
 				"RainbowYellow",
 				"RainbowBlue",
@@ -23,8 +23,8 @@ return {
 			local hooks = require("ibl.hooks")
 
 			hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-        vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#A6E3A1" })
-        vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#CBA6F7" })
+				vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#A6E3A1" })
+				vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#CBA6F7" })
 				vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#F38BA8" })
 				vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#F9E2AF" })
 				vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#89B4FA" })
