@@ -17,10 +17,10 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "<Tab>", ">gv")
 vim.keymap.set("v", "<S-Tab>", "<gv")
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 
 vim.opt.colorcolumn = "94"
 
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open diagnostics" })
 vim.keymap.set("n", "<leader>ce", function()
 	local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line(".") - 1 })
 	if #diagnostics > 0 then
@@ -30,8 +30,8 @@ vim.keymap.set("n", "<leader>ce", function()
 	else
 		print("No diagnostic at cursor")
 	end
-end, { noremap = true, silent = true })
+end, { noremap = true, silent = true, desc = "Copy diagnostic to clipboard" })
 
 -- go to errors in a file :/
-vim.keymap.set("n", "<leader>ne", vim.diagnostic.goto_next) -- next err
-vim.keymap.set("n", "<leader>pe", vim.diagnostic.goto_prev) -- previous err
+vim.keymap.set("n", "<leader>ne", vim.diagnostic.goto_next, { desc = "Next ERR!" }) -- next err
+vim.keymap.set("n", "<leader>pe", vim.diagnostic.goto_prev, { desc = "Previous ERR!" }) -- previous err
