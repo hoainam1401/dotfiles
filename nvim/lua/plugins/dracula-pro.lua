@@ -28,11 +28,12 @@ return {
 				visual = "#3E4452",
 				gutter_fg = "#4B5263",
 				nontext = "#3B4048",
-				white = "#F8F8F2",
-				black = "#22212C",
+				white = "#ABB2BF",
+				black = "#191A21",
 			},
 			transparent_bg = true,
 			italic_comment = true,
+			show_end_of_buffer = true,
 		})
 		vim.cmd.colorscheme("dracula")
 	end,
