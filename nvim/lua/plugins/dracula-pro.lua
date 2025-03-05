@@ -1,5 +1,5 @@
 return {
-	"maxmx03/dracula.nvim",
+	"Mofiqul/dracula.nvim",
 	name = "dracula",
 	lazy = false,
 	priority = 1000,
@@ -9,9 +9,9 @@ return {
 				bg = "#22212C",
 				fg = "#F8F8F2",
 				selection = "#454158",
-				comment = "#6272A4",
-				red = "#FF5555",
-				orange = "#FF9580",
+				comment = "#7970A9",
+				red = "#FF9580",
+				orange = "#FFCA80",
 				yellow = "#FFFF80",
 				green = "#8AFF80",
 				purple = "#9580FF",
@@ -32,6 +32,7 @@ return {
 				black = "#22212C",
 			},
 			transparent_bg = true,
+			italic_comment = true,
 		})
 		vim.cmd.colorscheme("dracula")
 	end,
