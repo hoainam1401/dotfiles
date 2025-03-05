@@ -29,11 +29,11 @@ return {
     --  :CopilotChatClose : Close chat window
     --  :CopilotChatOpen : Open chat window
     --  :CopilotChatStop : Stop current output
-    --  CopilotChatReset : Reset chat window
-    --  CopilotChatSave <name>? : Save chat history
-    --  CopilotChatLoad <name>? : Load chat history
-    --  CopilotChatModels : View/select available CopilotChatModels
-    --  CopilotChatAgents : View/select available CopilotChatAgents
-    --  CopilotChat<PromptName> : Use specific prompt template
+    --  :CopilotChatReset : Reset chat window
+    --  :CopilotChatSave <name>? : Save chat history
+    --  :CopilotChatLoad <name>? : Load chat history
+    --  :CopilotChatModels : View/select available CopilotChatModels
+    --  :CopilotChatAgents : View/select available CopilotChatAgents
+    --  :CopilotChat<PromptName> : Use specific prompt template
   },
 }
