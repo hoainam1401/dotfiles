@@ -1,6 +1,10 @@
 return {
 	{
 		"github/copilot.vim",
+		keys = {
+			{ "<leader>qc", ":Copilot disable<CR>", mode = "n", desc = "Disable Copilot" },
+			{ "<leader>oc", ":Copilot enable<CR>", mode = "n", desc = "Enable Copilot" },
+		},
 	},
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
