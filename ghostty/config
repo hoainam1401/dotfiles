@@ -8,7 +8,7 @@ font-thicken = true
 window-title-font-family = "MonoLisaPlus Variable"
 
 cursor-style = block
-cursor-opacity = 0.75
+cursor-opacity = 0.80
 adjust-cursor-thickness = 5
 
 adjust-cell-height = 15%
