@@ -12,7 +12,7 @@ cursor-opacity = 0.80
 adjust-cursor-thickness = 5
 
 adjust-cell-height = 15%
-config-file = Dracula-pro
+config-file = Catppuccin-Macchiato 
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 2
 
@@ -25,14 +25,15 @@ background-opacity = 0.80
 title = ""
 
 window-decoration = false
+window-step-resize = true
 window-colorspace = display-p3
 window-padding-balance = true
-window-padding-color = background
+window-padding-color = extend
 window-save-state = always
-window-padding-y = 0
-window-padding-x = 0
-window-width = 192
-window-height = 108
+window-padding-y = 8
+window-padding-x = 8
+window-width = 154
+window-height = 30
 
 macos-titlebar-style = transparent
 gtk-adwaita = false
