@@ -13,15 +13,11 @@
   "modules": [
     {
       "type": "custom",
-      "format": "\u001b[36m    コンピューター",
-    },
-    {
-      "type": "custom",
       "format": "┌──────────────────────────────────────────┐",
     },
     {
       "type": "os",
-      "key": "   OS",
+      "key": "   OS",
       "keyColor": "red",
     },
     {
@@ -36,7 +32,7 @@
     },
     {
       "type": "display",
-      "key": "   Display",
+      "key": "  󰍹 Display",
       "keyColor": "green",
     },
     {
