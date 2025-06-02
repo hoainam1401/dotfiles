@@ -14,6 +14,16 @@ vim.o.guicursor =
 
 vim.opt.rtp:prepend(lazypath)
 vim.opt.termguicolors = true
+-- Install the Dracule Pro colorscheme: 
+-- Step 1: Download the Vim folder 
+-- Step 2: Rename it to dracula_pro and move it to .local/share/nvim/site/pack/themes/start/dracula_pro
+-- Step 3: Add the following lines to your init.lua
+-- Enable syntax highlighting
+vim.cmd('syntax enable')
+-- Set Dracula Pro colorterm option (0 = use your terminal's colors)
+vim.g.dracula_colorterm = 0
+-- Set the colorscheme
+vim.cmd('colorscheme dracula_pro')
 require("floating-term")
 require("vim-options")
 require("lazy").setup("plugins")
