@@ -8,13 +8,13 @@ return {
 		local colors = {
 			gray = "#313244",
 			lightgray = "#585b70",
-			orange = "#ffb86c",
-			purple = "#cba6f7",
-			red = "#f38ba8",
-			yellow = "#f9e2af",
-			green = "#a6e3a1",
-			white = "#cdd6f4",
-			black = "#11111b",
+			orange = "#ffca80",
+			purple = "#9580ff",
+			red = "#ff9580",
+			yellow = "#ffff80",
+			green = "#8aff80",
+			white = "#f8f8f2",
+			black = "#22212c",
 		}
 		local my_lualine_theme = {
 			normal = {
