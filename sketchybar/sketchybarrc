@@ -9,7 +9,8 @@ source "$CONFIG_DIR/colors.sh" # Loads all defined colors
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 ITEM_DIR="$CONFIG_DIR/items"
-
+FONT_FACE="MonoLisa Plus"
+SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
 ##### Bar Appearance #####
 # Configuring the general appearance of the bar, these are only some of the
 # options available. For all options see:
@@ -30,8 +31,8 @@ sketchybar --bar height=37        \
 # For a full list of all available item properties see:
 # https://felixkratz.github.io/SketchyBar/config/items
 
-sketchybar --default icon.font="SF Pro:Semibold:15.0"  \
-                     label.font="SF Pro:Semibold:15.0" \
+sketchybar --default icon.font="$FONT_FACE:Medium:12.0"  \
+                     label.font="$FONT_FACE:Medium:12.0" \
                      background.color=$ITEM_BG_COLOR       \
                      background.corner_radius=5            \
                      background.height=24                  \
@@ -46,8 +47,7 @@ sketchybar --default icon.font="SF Pro:Semibold:15.0"  \
 source $ITEM_DIR/spaces.sh
 source $ITEM_DIR/front_app.sh
 
-# -- Right Side Of Notch Items --
-source $ITEM_DIR/media.sh
+
 
 # -- Right Side Items --
 source $ITEM_DIR/calendar.sh
@@ -55,6 +55,16 @@ source $ITEM_DIR/volume.sh
 source $ITEM_DIR/battery.sh
 source $ITEM_DIR/cpu.sh
 
+sketchybar --add event spotify_change $SPOTIFY_EVENT \
+  --add item spotify right \
+  --set spotify \
+  icon= \
+  icon.y_offset=1 \
+  icon.font="$FONT_FACE:Bold:12.0" \
+  label.drawing=off \
+  label.padding_left=3 \
+  script="$PLUGIN_DIR/spotify.sh" \
+  --subscribe spotify spotify_change mouse.clicked
 
 ##### Finalizing Setup #####
 # The below command is only needed at the end of the initial configuration to
