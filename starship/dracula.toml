@@ -101,11 +101,11 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:teal"
+style = "bg:green"
 format = '[[ $symbol $branch ](fg:base bg:green)]($style)'
 
 [git_status]
-style = "bg:teal"
+style = "bg:green"
 format = '[[($all_status$ahead_behind )](fg:base bg:green)]($style)'
 
 [nodejs]
@@ -155,13 +155,13 @@ format = '[[ $symbol( $version) ](fg:base bg:teal)]($style)'
 
 [docker_context]
 symbol = ""
-style = "bg:mantle"
-format = '[[ $symbol( $context) ](fg:cyan bg:surface2)]($style)'
+style = "bg:blue"
+format = '[[ $symbol( $context) ](fg:base bg:blue)]($style)'
 
 [time]
 disabled = false
 time_format = "%R"
-style = "bg:peach"
+style = "bg:purple"
 format = '[[  $time ](fg:mantle bg:purple)]($style)'
 
 [line_break]
