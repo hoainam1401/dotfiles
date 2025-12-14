@@ -1,0 +1,46 @@
+# Font family
+font-family = MonoLisa Plus 
+font-style = Medium
+font-style-italic = Medium Italic
+font-style-bold = Bold
+font-style-bold-italic = SemiBold Italic
+font-size = 16
+font-thicken = true
+
+# Ghostty theme
+config-file = Dracula-Pro
+
+# Cursor style
+cursor-style = block
+cursor-style-blink = true
+cursor-opacity = 0.80
+adjust-cursor-thickness = 5
+
+# MacOs options
+macos-option-as-alt = true
+macos-icon = custom-style
+macos-icon-frame = plastic
+macos-icon-ghost-color = #50FA7B
+macos-icon-screen-color = #282A36
+macos-window-shadow = false
+macos-non-native-fullscreen = true
+macos-titlebar-proxy-icon = hidden
+macos-titlebar-style = transparent
+
+
+# Stop Ghostty when I close everything.
+quit-after-last-window-closed = true
+
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 0.4
+
+background-opacity = 0.80
+background-blur = 20
+title = "Ghostty👻"
+
+# Updates
+auto-update = download
+auto-update-channel = stable
+
+
+
