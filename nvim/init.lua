@@ -24,6 +24,7 @@ vim.cmd('syntax enable')
 vim.g.dracula_colorterm = 0
 -- Set the colorscheme
 vim.cmd('colorscheme dracula_pro')
+require("cmd-line")
 require("floating-term")
 require("vim-options")
 require("lazy").setup("plugins")

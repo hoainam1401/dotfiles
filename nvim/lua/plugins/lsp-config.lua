@@ -9,7 +9,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "pyright", "clangd", "jdtls", "ts_ls", "texlab" },
+        ensure_installed = { "lua_ls", "pyright", "clangd", "jdtls" },
       })
     end,
   },
@@ -18,26 +18,25 @@ return {
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      local lspconfig = require("lspconfig")
+      vim.lsp.config("lua_ls", {
+        capabilities = capabilities,
+      })
+      vim.lsp.enable("lua_ls")
 
-      lspconfig.lua_ls.setup({
+      vim.lsp.config("pyright", {
         capabilities = capabilities,
       })
-      lspconfig.pyright.setup({
+      vim.lsp.enable("pyright")
+
+      vim.lsp.config("clangd", {
         capabilities = capabilities,
       })
-      lspconfig.clangd.setup({
+      vim.lsp.enable("clangd")
+
+      vim.lsp.config("jdtls", {
         capabilities = capabilities,
       })
-      lspconfig.jdtls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.ts_ls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.texlab.setup({
-        capabilities = capabilities,
-      })
+      vim.lsp.enable("jdtls")
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Go to definition" })
