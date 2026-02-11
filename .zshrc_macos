@@ -1,13 +1,15 @@
-echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/hoainam/.zprofile
 eval "$(/opt/homebrew/bin/brew shellenv)"
-source $(brew --prefix)/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+BREW_PREFIX="$(brew --prefix)"
 
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source "$BREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh"
+
+source "$BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+source "$BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  FPATH="$BREW_PREFIX/share/zsh-completions:$FPATH"
   autoload -Uz compinit
   compinit
 fi
@@ -26,4 +28,6 @@ alias la='lsd -a'
 alias lla='lsd -la'
 alias lt='lsd --tree'
 alias vim='nvim'
+
+nerdfetch
 
