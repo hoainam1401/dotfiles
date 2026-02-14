@@ -18,10 +18,8 @@ adjust-cursor-thickness = 5
 
 # MacOs options
 macos-option-as-alt = true
-macos-icon = custom-style
-macos-icon-frame = plastic
-macos-icon-ghost-color = #50FA7B
-macos-icon-screen-color = #282A36
+macos-icon = custom
+macos-custom-icon = ~/.config/ghostty/dracula.icns
 macos-window-shadow = false
 macos-non-native-fullscreen = true
 macos-titlebar-proxy-icon = hidden
