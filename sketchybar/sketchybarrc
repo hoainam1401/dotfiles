@@ -9,19 +9,21 @@ ICON_FONT="Hack Nerd Font"
 sketchybar --bar \
   position=top \
   height=38 \
-  blur_radius=0 \
+  blur_radius=20 \
   color="$BAR_COLOR" \
   border_width=1 \
   border_color="$BAR_BORDER_COLOR" \
+  corner_radius=10 \
   shadow=off \
   sticky=on \
   topmost=off \
+  font_smoothing=on \
   display=all \
   padding_left=14 \
   padding_right=14 \
   notch_width=188 \
-  y_offset=0 \
-  margin=0
+  y_offset=4 \
+  margin=6
 
 sketchybar --default \
   icon.font="$ICON_FONT:Regular:15.0" \
@@ -30,8 +32,8 @@ sketchybar --default \
   label.color="$FOREGROUND" \
   padding_left=7 \
   padding_right=7 \
-  background.corner_radius=4 \
-  background.height=26
+  background.corner_radius=7 \
+  background.height=30
 
 sketchybar --add event aerospace_workspace_change
 
@@ -41,13 +43,17 @@ sketchybar --add item apple left \
     icon="" \
     icon.font="SF Pro:Semibold:18.0" \
     icon.color="$FOREGROUND" \
+    icon.width=24 \
+    icon.align=center \
     label.drawing=off \
     padding_left=1 \
     padding_right=11 \
-    click_script="open -a 'System Settings'"
+    click_script="open -a 'System Settings'" \
+    script="/bin/sh $CONFIG_DIR/plugins/hover.sh" \
+  --subscribe apple mouse.entered mouse.exited
 
-# Minimal Omarchy workspaces: numbers for inactive spaces and a cream square
-# for the focused space, matching the supplied reference.
+# Omarchy-style workspaces: a lavender square for the focused space, a small
+# cream dot for occupied spaces, and muted numbers for empty spaces.
 for sid in 1 2 3 4 5 6 7 8 9; do
   sketchybar --add item "space.$sid" left \
     --subscribe "space.$sid" aerospace_workspace_change \
@@ -62,7 +68,8 @@ for sid in 1 2 3 4 5 6 7 8 9; do
       padding_left=2 \
       padding_right=2 \
       click_script="aerospace workspace $sid" \
-      script="/bin/sh $CONFIG_DIR/plugins/aerospace.sh $sid"
+      script="/bin/sh $CONFIG_DIR/plugins/hover.sh /bin/sh $CONFIG_DIR/plugins/aerospace.sh $sid" \
+    --subscribe "space.$sid" mouse.entered mouse.exited
 done
 
 # Focused app for the selected AeroSpace workspace.
@@ -83,55 +90,80 @@ sketchybar --add item front_app left \
     background.height=27 \
     padding_left=10 \
     padding_right=4 \
-    script="/bin/sh $CONFIG_DIR/plugins/front_app.sh" \
-  --subscribe front_app front_app_switched aerospace_workspace_change
+    script="/bin/sh $CONFIG_DIR/plugins/hover.sh /bin/sh $CONFIG_DIR/plugins/front_app.sh" \
+  --subscribe front_app front_app_switched aerospace_workspace_change mouse.entered mouse.exited
 
 # Omarchy-style centered date and time. On the external display this sits at
 # the true center; SketchyBar automatically accounts for the internal notch.
-sketchybar --add item mic center \
-  --set mic icon="󰍭" icon.color="$ACCENT" label.drawing=off padding_right=8 \
-    click_script="open 'x-apple.systempreferences:com.apple.Sound-Settings.extension'"
-
-sketchybar --add item clock center \
-  --set clock \
+# The current display arrangement is QHD=1 and built-in Retina=2. Keep the
+# external clock centered, but move the built-in clock clear of the notch.
+sketchybar --add item clock.external center \
+  --set clock.external \
+    display=1 \
     icon.drawing=off \
     label.font="$FONT:Medium:13.0" \
     label.color="$FOREGROUND" \
     update_freq=30 \
-    script="/bin/sh $CONFIG_DIR/plugins/clock.sh" \
-    click_script="open -a Calendar"
+    script="/bin/sh $CONFIG_DIR/plugins/hover.sh /bin/sh $CONFIG_DIR/plugins/clock.sh" \
+    click_script="open -a Calendar" \
+  --subscribe clock.external mouse.entered mouse.exited
 
-sketchybar --add item moon center \
-  --set moon icon="󰖔" icon.color="$FOREGROUND" label.drawing=off padding_left=8 \
-    click_script="open 'x-apple.systempreferences:com.apple.Focus-Settings.extension'"
+sketchybar --add item clock.internal right \
+  --set clock.internal \
+    display=2 \
+    icon.drawing=off \
+    label.font="$FONT:Medium:13.0" \
+    label.color="$FOREGROUND" \
+    update_freq=30 \
+    script="/bin/sh $CONFIG_DIR/plugins/hover.sh /bin/sh $CONFIG_DIR/plugins/clock.sh" \
+    click_script="open -a Calendar" \
+  --subscribe clock.internal mouse.entered mouse.exited
 
-sketchybar --add item refresh center \
-  --set refresh icon="󰑐" icon.color="$FOREGROUND" label.drawing=off \
-    click_script="sketchybar --reload"
+sketchybar --add item moon right \
+  --set moon icon="󰖔" icon.color="$FOREGROUND" icon.width=24 icon.align=center \
+    label.drawing=off padding_left=4 padding_right=4 \
+    click_script="open 'x-apple.systempreferences:com.apple.Focus-Settings.extension'" \
+    script="/bin/sh $CONFIG_DIR/plugins/hover.sh" \
+  --subscribe moon mouse.entered mouse.exited
+
+sketchybar --add item refresh right \
+  --set refresh icon="󰑐" icon.color="$FOREGROUND" icon.width=24 icon.align=center \
+    label.drawing=off padding_left=4 padding_right=4 \
+    click_script="sketchybar --reload" \
+    script="/bin/sh $CONFIG_DIR/plugins/hover.sh" \
+  --subscribe refresh mouse.entered mouse.exited
 
 sketchybar --add item battery right \
-  --set battery update_freq=120 script="/bin/sh $CONFIG_DIR/plugins/battery.sh" \
-  --subscribe battery power_source_change system_woke
+  --set battery icon.width=24 icon.align=center padding_left=4 padding_right=4 \
+    update_freq=120 script="/bin/sh $CONFIG_DIR/plugins/hover.sh /bin/sh $CONFIG_DIR/plugins/battery.sh" \
+    click_script="open 'x-apple.systempreferences:com.apple.Battery-Settings.extension'" \
+  --subscribe battery power_source_change system_woke mouse.entered mouse.exited
 
 sketchybar --add item volume right \
-  --set volume label.width=28 script="/bin/sh $CONFIG_DIR/plugins/volume.sh" \
-  --subscribe volume volume_change \
-  --set volume click_script="osascript -e 'set volume output muted not (output muted of (get volume settings))'"
+  --set volume icon.width=24 icon.align=center label.width=28 padding_left=4 padding_right=4 \
+    script="/bin/sh $CONFIG_DIR/plugins/hover.sh /bin/sh $CONFIG_DIR/plugins/volume.sh" \
+  --subscribe volume volume_change mouse.entered mouse.exited \
+  --set volume click_script="open 'x-apple.systempreferences:com.apple.Sound-Settings.extension'"
 
 sketchybar --add item wifi right \
-  --set wifi update_freq=30 script="/bin/sh $CONFIG_DIR/plugins/wifi.sh" \
-  --subscribe wifi wifi_change system_woke
+  --set wifi icon.width=24 icon.align=center padding_left=4 padding_right=4 update_freq=30 \
+    script="/bin/sh $CONFIG_DIR/plugins/hover.sh /bin/sh $CONFIG_DIR/plugins/wifi.sh" \
+    click_script="open 'x-apple.systempreferences:com.apple.wifi-settings-extension'" \
+  --subscribe wifi wifi_change system_woke mouse.entered mouse.exited
 
 sketchybar --add item bluetooth right \
-  --set bluetooth icon="󰂯" icon.color="$FOREGROUND" label.drawing=off \
-    click_script="open 'x-apple.systempreferences:com.apple.BluetoothSettings'"
+  --set bluetooth icon="󰂯" icon.color="$FOREGROUND" icon.width=24 icon.align=center \
+    label.drawing=off padding_left=4 padding_right=4 \
+    click_script="open 'x-apple.systempreferences:com.apple.BluetoothSettings'" \
+    script="/bin/sh $CONFIG_DIR/plugins/hover.sh" \
+  --subscribe bluetooth mouse.entered mouse.exited
 
 sketchybar --add item display_icon right \
-  --set display_icon icon="󰍹" icon.color="$FOREGROUND" label.drawing=off \
-    click_script="open 'x-apple.systempreferences:com.apple.Displays-Settings.extension'"
-
-sketchybar --add item chevron right \
-  --set chevron icon="󰅁" icon.color="$FOREGROUND" label.drawing=off
+  --set display_icon icon="󰍹" icon.color="$FOREGROUND" icon.width=24 icon.align=center \
+    label.drawing=off padding_left=4 padding_right=4 \
+    click_script="open 'x-apple.systempreferences:com.apple.Displays-Settings.extension'" \
+    script="/bin/sh $CONFIG_DIR/plugins/hover.sh" \
+  --subscribe display_icon mouse.entered mouse.exited
 
 # Now Playing sits at the left edge of the right status group. Polling is used
 # because SketchyBar's media_change event is deprecated on macOS 26.
@@ -151,7 +183,16 @@ sketchybar --add item media right \
     background.corner_radius=7 \
     background.height=27 \
     update_freq=3 \
-    script="/bin/sh $CONFIG_DIR/plugins/media.sh" \
-    click_script="nowplaying-cli togglePlayPause >/dev/null 2>&1; /bin/sh $CONFIG_DIR/plugins/media.sh"
+    script="/bin/sh $CONFIG_DIR/plugins/hover.sh /bin/sh $CONFIG_DIR/plugins/media.sh" \
+    click_script="nowplaying-cli togglePlayPause >/dev/null 2>&1; /bin/sh $CONFIG_DIR/plugins/media.sh" \
+  --subscribe media mouse.entered mouse.exited
+
+sketchybar --add bracket status_group moon refresh battery volume wifi bluetooth display_icon \
+  --set status_group \
+    background.color="$ITEM_BG_COLOR" \
+    background.border_color="$BAR_BORDER_COLOR" \
+    background.border_width=1 \
+    background.corner_radius=9 \
+    background.height=30
 
 sketchybar --update

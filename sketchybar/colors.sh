@@ -1,9 +1,10 @@
 #!/usr/bin/env sh
 
 # Official Catppuccin Mocha palette.
-export BAR_COLOR=0xf51e1e2e
+export BAR_COLOR=0xe61e1e2e
 export BAR_BORDER_COLOR=0xff313244
 export ITEM_BG_COLOR=0xff313244
+export HOVER_BG_COLOR=0xff45475a
 export ACTIVE_BG_COLOR=0xffcba6f7
 export ACTIVE_FG_COLOR=0xff1e1e2e
 export FOREGROUND=0xffcdd6f4
