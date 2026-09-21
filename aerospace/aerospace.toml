@@ -232,5 +232,13 @@ if.app-id = 'com.overwolf.curseforge'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
+if.app-name-regex-substring = '^(Overwatch|Grim Dawn|NINJA GAIDEN Ragebound)\.exe$'
+run = ['move-node-to-workspace 3', 'layout floating', 'fullscreen on']
+
+[[on-window-detected]]
+if.app-name-regex-substring = '^PathOfExile(Steam|_x64Steam)\.exe$'
+run = ['move-node-to-workspace 3', 'layout floating']
+
+[[on-window-detected]]
 if.app-id = 'com.codeweavers.CrossOver'
 run = 'move-node-to-workspace 3'
