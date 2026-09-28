@@ -232,7 +232,7 @@ if.app-id = 'com.overwolf.curseforge'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
-if.app-name-regex-substring = '^(Overwatch|Grim Dawn|NINJA GAIDEN Ragebound)\.exe$'
+if.app-name-regex-substring = '^(Overwatch|Grim Dawn|NINJA GAIDEN Ragebound|game)\.exe$'
 run = ['move-node-to-workspace 3', 'layout floating', 'fullscreen on']
 
 [[on-window-detected]]
