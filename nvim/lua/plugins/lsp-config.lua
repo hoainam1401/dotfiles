@@ -1,49 +1,62 @@
+local servers = {
+	clangd = {},
+	jdtls = {},
+	pyright = {},
+	lua_ls = {
+		settings = {
+			Lua = {
+				diagnostics = { globals = { "vim" } },
+				workspace = { checkThirdParty = false },
+			},
+		},
+	},
+}
+
 return {
-  {
-    "williamboman/mason.nvim",
-    config = function()
-      require("mason").setup()
-    end,
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "pyright", "clangd", "jdtls" },
-      })
-    end,
-  },
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+	{
+		"williamboman/mason.nvim",
+		opts = {},
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"neovim/nvim-lspconfig",
+		},
+		opts = {
+			ensure_installed = vim.tbl_keys(servers),
+			automatic_enable = false,
+		},
+	},
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = { "hrsh7th/cmp-nvim-lsp" },
+		config = function()
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      vim.lsp.config("lua_ls", {
-        capabilities = capabilities,
-      })
-      vim.lsp.enable("lua_ls")
+			for name, config in pairs(servers) do
+				config.capabilities = capabilities
+				vim.lsp.config(name, config)
+				vim.lsp.enable(name)
+			end
 
-      vim.lsp.config("pyright", {
-        capabilities = capabilities,
-      })
-      vim.lsp.enable("pyright")
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("lsp_keymaps", { clear = true }),
+				callback = function(event)
+					local map = function(lhs, rhs, desc)
+						vim.keymap.set("n", lhs, rhs, { buffer = event.buf, desc = desc })
+					end
 
-      vim.lsp.config("clangd", {
-        capabilities = capabilities,
-      })
-      vim.lsp.enable("clangd")
-
-      vim.lsp.config("jdtls", {
-        capabilities = capabilities,
-      })
-      vim.lsp.enable("jdtls")
-
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
-      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Go to definition" })
-      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "Go to references" })
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
-      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
-      vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format" })
-    end,
-  },
+					map("K", vim.lsp.buf.hover, "Show hover information")
+					map("<leader>gd", vim.lsp.buf.definition, "Go to definition")
+					map("<leader>gr", vim.lsp.buf.references, "Go to references")
+					map("<leader>ca", vim.lsp.buf.code_action, "Code action")
+					map("<leader>rn", vim.lsp.buf.rename, "Rename symbol")
+					map("<leader>gf", function()
+						vim.lsp.buf.format({ async = true })
+					end, "Format buffer")
+				end,
+			})
+		end,
+	},
 }

@@ -1,24 +1,30 @@
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set shiftwidth=2")
-vim.g.mapleader = " "
-vim.cmd("set number")
-vim.cmd("set relativenumber")
-vim.cmd("set cursorline")
--- Navigate vim panes better
-vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
-vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
-vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
-vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
+local opt = vim.opt
+
+opt.expandtab = true
+opt.tabstop = 2
+opt.softtabstop = 2
+opt.shiftwidth = 2
+opt.number = true
+opt.relativenumber = true
+opt.cursorline = true
+opt.colorcolumn = "94"
+opt.signcolumn = "yes"
+opt.splitbelow = true
+opt.splitright = true
+opt.ignorecase = true
+opt.smartcase = true
+opt.undofile = true
+opt.updatetime = 250
+opt.timeoutlen = 400
+opt.scrolloff = 4
+opt.guicursor =
+	"n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
 
 -- Move selected line / block of text in visual mode
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set("v", "<Tab>", ">gv")
-vim.keymap.set("v", "<S-Tab>", "<gv")
-
-vim.opt.colorcolumn = "94"
+vim.keymap.set("x", "J", ":move '>+1<CR>gv=gv", { desc = "Move selection down" })
+vim.keymap.set("x", "K", ":move '<-2<CR>gv=gv", { desc = "Move selection up" })
+vim.keymap.set("x", "<Tab>", ">gv", { desc = "Indent selection" })
+vim.keymap.set("x", "<S-Tab>", "<gv", { desc = "Unindent selection" })
 
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open diagnostics" })
 vim.keymap.set("n", "<leader>ce", function()
@@ -26,12 +32,16 @@ vim.keymap.set("n", "<leader>ce", function()
 	if #diagnostics > 0 then
 		local message = diagnostics[1].message
 		vim.fn.setreg("+", message)
-		print("Copied diagnostic: " .. message)
+		vim.notify("Copied diagnostic: " .. message)
 	else
-		print("No diagnostic at cursor")
+		vim.notify("No diagnostic on this line", vim.log.levels.INFO)
 	end
-end, { noremap = true, silent = true, desc = "Copy diagnostic to clipboard" })
+end, { desc = "Copy diagnostic to clipboard" })
 
--- go to errors in a file :/
-vim.keymap.set("n", "<leader>ne", vim.diagnostic.goto_next, { desc = "Next ERR!" }) -- next err
-vim.keymap.set("n", "<leader>pe", vim.diagnostic.goto_prev, { desc = "Previous ERR!" }) -- previous err
+vim.keymap.set("n", "<leader>ne", function()
+	vim.diagnostic.jump({ count = 1, float = true })
+end, { desc = "Next diagnostic" })
+
+vim.keymap.set("n", "<leader>pe", function()
+	vim.diagnostic.jump({ count = -1, float = true })
+end, { desc = "Previous diagnostic" })
