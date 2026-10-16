@@ -1,0 +1,13 @@
+# Login-shell environment shared by macOS, Linux, and WSL.
+if (( ! $+commands[brew] )); then
+  for brew_bin in /opt/homebrew/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
+    if [[ -x "$brew_bin" ]]; then
+      eval "$($brew_bin shellenv)"
+      break
+    fi
+  done
+  unset brew_bin
+fi
+
+[[ -d "$HOME/.local/bin" ]] && path=("$HOME/.local/bin" $path)
+typeset -U path PATH
